@@ -14,18 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.rubiconproject.kafka.producer;
+package kafka.examples;
 
 public class KafkaConsumerProducerDemo implements KafkaProperties
 {
   public static void main(String[] args)
   {
     final boolean isAsync = args.length > 0 ? !args[0].trim().toLowerCase().equals("sync") : true;
-    RpProducer producerThread = new RpProducer(KafkaProperties.topic, isAsync);
+    Producer producerThread = new Producer(KafkaProperties.topic, isAsync);
     producerThread.start();
 
-    //Consumer consumerThread = new Consumer(KafkaProperties.topic);
-    //consumerThread.start();
+    Consumer consumerThread = new Consumer(KafkaProperties.topic);
+    consumerThread.start();
     
   }
 }
